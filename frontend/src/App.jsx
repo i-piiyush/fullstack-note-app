@@ -15,7 +15,7 @@ function App() {
     const fetchNotes = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("https://fullstack-note-app-y8hv.onrender.com/note");
+        const res = await axios.get("https://fullstack-note-app-l22s.onrender.com/note");
         setNotes(res.data);
       } catch (error) {
         console.error("Failed to load notes:", error);
@@ -42,13 +42,13 @@ function App() {
       closeModal();
       setLoading(true);
       // Add on backend
-      const res = await axios.post("https://fullstack-note-app-y8hv.onrender.com/note", {
+      const res = await axios.post("https://fullstack-note-app-l22s.onrender.com/note", {
         title,
         description: desc,
       });
       // If backend returns created note with _id, consider res.data
       // For now, we refetch notes to sync with backend
-      const updatedNotes = await axios.get("https://fullstack-note-app-y8hv.onrender.com/note");
+      const updatedNotes = await axios.get("https://fullstack-note-app-l22s.onrender.com/note");
       setNotes(updatedNotes.data);
     } catch (err) {
       console.error("Add note failed", err);
@@ -61,7 +61,7 @@ function App() {
   const deleteNote = async (id) => {
     try {
       setLoading(true);
-      await axios.delete(`https://fullstack-note-app-y8hv.onrender.com/note/${id}`);
+      await axios.delete(`https://fullstack-note-app-l22s.onrender.com/note/${id}`);
       setNotes((oldNotes) => oldNotes.filter((note) => note._id !== id));
     } catch (err) {
       console.error("Delete note failed", err);
